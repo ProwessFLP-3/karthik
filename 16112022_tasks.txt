@@ -1,0 +1,11 @@
+1.
+
+%dw 2.0
+output application/json
+fun kk(pin) = if ((pin.country) == "91") "IND" else "US"
+---
+kk(payload)
+-------------------------------------------
+
+2.
+payload.&message
