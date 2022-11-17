@@ -1,0 +1,134 @@
+1.
+
+payload map((item, index)->{"msg": item.message,
+
+"cities": item.city map{
+"city": $ ++ item.message
+}
+})
+---------------
+2.
+city ++ city1 ++city2
+
+--------------------------
+
+3.
+(payload[-1 to 0] joinBy"")
+
+-----------------------------
+
+4.
+ payload.city [-1 to 0] joinBy  ""
+---------------------------------
+5.
+
+sum(payload.id [-1 to 0]) + 5
+----------------------
+6.
+ payload.city ++ ["hyd3"]
+
+----------------------
+7.
+
+payload.city --["hyd1"]
+---------------
+
+8.
+
+payload ++ "add":"tnl"
+
+--------------------------
+9.
+
+{
+     "msg": "Hello world!",
+     "city": "hyd",
+     "id":  payload.id as Number,
+     "active": "true"
+ }
+------------------------
+10.
+payload + {"message": "Hello world1!",
+    "city":"hyd2",
+    "id":"2",
+    "active":"false"}
+---------------------------
+
+11.
+round (payload.a)
+
+--------------------------
+12.
+round (payload.a)
+--------------------
+13.
+max (payload.a)
+
+---------------------
+
+
+14.
+
+firstInput map (value) ->
+{
+"id": value.bookId,
+"title": value.title,
+"price" : value.price,
+(secondInput filter($.bookId == value.bookId) map (
+(item)->
+{
+"auth"; item.author
+})
+}
+
+-------------------
+15.
+payload[0] mapObject{
+(($$): $$$
+)}
+
+------------------
+16.
+
+payload map ((item, index)->
+
+{
+(item mapObject
+if(($ == "hyd"))
+{($$):$,
+"add": "tln"}
+else
+($$):$$
+)
+})
+
+--------------------
+
+17.
+payload filter($.active =="true")
+------------------------------
+18.
+(payload filter ($.active =="true" ) 
+map (item, index) -> 
+{
+"id" : item.id
+}[0]) joinBy "," 
+-----------------
+
+
+19.
+
+payload orderBy $.id distinctBy ($.id) map ((item, index) ->
+
+{
+"message": item.message,
+"id": item.id as Number
+
+})
+
+---------------------
+
+
+
+
+
